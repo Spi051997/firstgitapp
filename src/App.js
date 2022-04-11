@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Cartitem from "./Cartitem"
+// import { Box, Flex, Heading, Text, Button, Link, Image, Card } from "rebass";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="App">
+        <Cartitem />
+        {/* <Flex className="Flexcart">
+          <Card className="Cardcart">
+            <Image
+              src="https://source.unsplash.com/random/512x384?space"
+              className="Imagecart"
+            />
+            <Flex className="MainFlexboxStyle">
+              <Box p={3} width={1 / 2} className="FlexBoxstyle" >
+                <Text className="Boxfontstyle">T-Shirt</Text>
+              </Box>
+              <Box p={3} width={1 / 2} >
+                <Text className="Boxfontstyle">Price 999</Text>
+              </Box>
+              <Box p={3} width={1 / 2} >
+                <Text className="Boxfontstyle">Qty:1</Text>
+              </Box>
+            </Flex>
+
+          </Card>
+        </Flex> */}
+      </div>
+    </>
   );
 }
 
