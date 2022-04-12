@@ -20,10 +20,17 @@ class Cartitem extends React.Component {
     //  this.state.Qty+=1;
     console.log("this",this.state.Qty);
     // Setstate form 1
-    this.setState({
-      Qty:this.state.Qty+1
-    }
-      )
+    // this.setState({
+    //   Qty:this.state.Qty+1
+    // }
+    //   )
+    this.setState((prevState)=>
+    {
+      return{
+        Qty:prevState.Qty+1
+      }
+      //  Qty: prevState.Qty+1
+    });
     
     
   }
