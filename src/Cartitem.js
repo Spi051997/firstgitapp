@@ -17,8 +17,14 @@ class Cartitem extends React.Component {
   }
   shoecick=()=>
   {
+    //  this.state.Qty+=1;
     console.log("this",this.state.Qty);
-    // const inc=this.state.Qty;
+    // Setstate form 1
+    this.setState({
+      Qty:this.state.Qty+1
+    }
+      )
+    
     
   }
     
