@@ -1,12 +1,13 @@
 import "./App.css";
 import Cartitem from "./Cartitem"
+import Cart from "./Cart"
 // import { Box, Flex, Heading, Text, Button, Link, Image, Card } from "rebass";
 
 function App() {
   return (
     <>
       <div className="App">
-        <Cartitem />
+        <Cart />
         {/* <Flex className="Flexcart">
           <Card className="Cardcart">
             <Image
