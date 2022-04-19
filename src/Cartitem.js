@@ -62,7 +62,7 @@ class Cartitem extends React.Component {
   render() {
    console.log("this.props",this.props);
     const { title, price, Qty } = this.props.product ;
-    
+    const {product,onincrese,ondecerese,ondelete}=this.props;
 
     return (
       // console.log(this.props)
@@ -87,18 +87,18 @@ class Cartitem extends React.Component {
             </Flex>
             <Flex className="Button">
               <img
-                onClick={()=>this.props.onincrese(this.props.product)}
+                onClick={()=>onincrese(product)}
                 alt="add"
                 src="https://cdn-icons-png.flaticon.com/512/1828/1828926.png"
                 className="iconsize"
               />
               <img
-                onClick={this.decreseQty}
+                onClick={()=> ondecerese(product)}
                 src="https://cdn-icons-png.flaticon.com/512/1828/1828906.png"
                 className="iconsize"
               />
               <img
-              onClick={this.clearfunc}
+               onClick={()=>ondelete(product.id)}
                 src="https://cdn-icons-png.flaticon.com/512/2602/2602735.png"
                 className="iconsize"
               />

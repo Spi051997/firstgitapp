@@ -48,6 +48,49 @@ handleincreseQuntity=(product)=>
         products:products
     })
 
+}   
+
+handledecrementQuantity=(product)=>
+{
+     console.log("Hello Decrement Product",product)
+     const {products}=this.state;
+     const index=products.indexOf(product);
+
+     if(products[index].Qty===0)
+     {
+         return;
+     }
+     products[index].Qty-=1;
+ 
+     this.setState(
+     {
+         products:products
+     })
+
+}
+
+// Deleteprodcut=(id)=>
+// {
+//     const {products}=this.state;
+
+//     const items=products.map((item)=>
+//         item.id!==id
+//     );
+
+//     this.setState={
+//         products:items
+//     }
+
+// }
+handelete=(id)=>
+{
+    console.log("Delete the product")
+    const {products}=this.state;
+    const item=products.filter((item)=>item.id!==id);
+    this.setState({
+        products:item
+    })
+
 }
 
     render(){
@@ -61,7 +104,10 @@ handleincreseQuntity=(product)=>
                    return <Cartitem 
                    product={product} 
                    key={product.id}
+                  
                    onincrese={this.handleincreseQuntity}
+                   ondecerese={this.handledecrementQuantity}
+                   ondelete={this.handelete}
                        />
                })
            }
