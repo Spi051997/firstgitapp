@@ -12,10 +12,15 @@ const Nab = (props) => {
         </span>
         <span>
           <div className="Valuename">
-              <h3 className="Counttext">{props.count}</h3>
+            <h3 className="Counttext">{props.count}</h3>
           </div>
         </span>
+       
       </div>
+      <span className="CartTotal">
+        Total:{props.total}
+      </span>
+
     </div>
   );
 };

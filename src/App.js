@@ -70,39 +70,45 @@ class App extends React.Component {
     });
   };
 
+  getNavcount = () => {
+    console.log("hello couent");
+    const { products } = this.state;
+    let count = 0;
 
-  getNavcount=()=>
-  {
-
-    console.log("hello couent")
-    const {products}=this.state;
-    let count=0;
-
-    products.forEach((product)=>
-    {
-      count+=product.Qty;
-    })
+    products.forEach((product) => {
+      count += product.Qty;
+    });
 
     return count;
+  };
+
+  gettotalprice=()=>
+  {
+    const {products}=this.state;
+    let carttotal=0;
+
+    products.map((product)=>
+    {
+       carttotal=carttotal+(product.Qty*product.price)
+    })
 
 
+    return carttotal;
 
   }
 
   render() {
-    const {products}=this.state;
+    const { products } = this.state;
     return (
       <>
         <div className="App">
-          <Nab  
-            count={this.getNavcount()} />
+          <Nab total={this.gettotalprice()} count={this.getNavcount()} />
           <Cart
-           products={products}
-           onincrese={this.handleincreseQuntity}
-           ondecerese={this.handledecrementQuantity}
-           ondelete={this.handelete}
-           />
-        
+            products={products}
+            onincrese={this.handleincreseQuntity}
+            ondecerese={this.handledecrementQuantity}
+            ondelete={this.handelete}
+          />
         </div>
       </>
     );
