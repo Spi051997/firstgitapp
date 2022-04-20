@@ -1,36 +1,112 @@
 import "./App.css";
-import Cartitem from "./Cartitem"
-import Cart from "./Cart"
+
+import Cart from "./Cart";
+import Nab from "./Nab";
+import React from "react";
 // import { Box, Flex, Heading, Text, Button, Link, Image, Card } from "rebass";
 
-function App() {
-  return (
-    <>
-      <div className="App">
-        <Cart />
-        {/* <Flex className="Flexcart">
-          <Card className="Cardcart">
-            <Image
-              src="https://source.unsplash.com/random/512x384?space"
-              className="Imagecart"
-            />
-            <Flex className="MainFlexboxStyle">
-              <Box p={3} width={1 / 2} className="FlexBoxstyle" >
-                <Text className="Boxfontstyle">T-Shirt</Text>
-              </Box>
-              <Box p={3} width={1 / 2} >
-                <Text className="Boxfontstyle">Price 999</Text>
-              </Box>
-              <Box p={3} width={1 / 2} >
-                <Text className="Boxfontstyle">Qty:1</Text>
-              </Box>
-            </Flex>
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      products: [
+        {
+          title: "T-shirt",
+          price: 999,
+          Qty: 1,
+          img: "",
+          id: 1,
+        },
+        {
+          title: "Phone",
+          price: 99,
+          Qty: 10,
+          img: "",
+          id: 2,
+        },
+        {
+          title: "Ball",
+          price: 9,
+          Qty: 1,
+          img: "",
+          id: 3,
+        },
+      ],
+    };
+  }
 
-          </Card>
-        </Flex> */}
-      </div>
-    </>
-  );
+  handleincreseQuntity = (product) => {
+    console.log("Hey need to increse the product", product);
+    const { products } = this.state;
+    const index = products.indexOf(product);
+    products[index].Qty += 1;
+
+    this.setState({
+      products: products,
+    });
+  };
+
+  handledecrementQuantity = (product) => {
+    console.log("Hello Decrement Product", product);
+    const { products } = this.state;
+    const index = products.indexOf(product);
+
+    if (products[index].Qty === 0) {
+      return;
+    }
+    products[index].Qty -= 1;
+
+    this.setState({
+      products: products,
+    });
+  };
+
+  handelete = (id) => {
+    console.log("Delete the product");
+    const { products } = this.state;
+    const item = products.filter((item) => item.id !== id);
+    this.setState({
+      products: item,
+    });
+  };
+
+
+  getNavcount=()=>
+  {
+
+    console.log("hello couent")
+    const {products}=this.state;
+    let count=0;
+
+    products.forEach((product)=>
+    {
+      count+=product.Qty;
+    })
+
+    return count;
+
+
+
+  }
+
+  render() {
+    const {products}=this.state;
+    return (
+      <>
+        <div className="App">
+          <Nab  
+            count={this.getNavcount()} />
+          <Cart
+           products={products}
+           onincrese={this.handleincreseQuntity}
+           ondecerese={this.handledecrementQuantity}
+           ondelete={this.handelete}
+           />
+        
+        </div>
+      </>
+    );
+  }
 }
 
 export default App;

@@ -1,3 +1,40 @@
+.Counttext
+{
+  font-size: smaller;
+   color: rebeccapurple;
+   margin-top: 5%;
+}
+.NavApp
+{
+  width: 100%;
+  height: 60px;
+  background-color: darkslateblue;
+
+}
+.Cartitemdiv
+{
+  display: Flex;
+  width: 100px;
+  height: 50px;
+  flex-direction:row;
+  margin-left: 90%;
+  padding-top: 0.5%;
+   /* border: 0.1px solid black */
+}
+.Valuename
+{
+  width: 16px;
+  height: 19px;
+  padding-left: 2%;
+  border-radius: 40%;
+  background-color: yellow;
+}  
+.Cartpic
+{
+  height: 30px;
+  width: 30px;
+  padding-top: 5%;
+} 
 .App {
   text-align: center;
   /* background-image: linear-gradient(#acb6e5, #86fde8); */
