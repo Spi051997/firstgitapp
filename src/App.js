@@ -101,6 +101,23 @@ class App extends React.Component {
     return carttotal;
 
   }
+  addproduct=()=>
+  {
+    firebase.firestore().collection('products').add({
+      img:"",
+      Qty:1,
+      price:100,
+      title:"Belt"
+    })
+    .then((docref)=>
+    {
+      console.log("Added products",docref)
+    })
+    .catch((err)=>
+    {
+      console.log(err);
+    })
+  }
 
   render() {
     const { products,Loading } = this.state;
@@ -108,6 +125,7 @@ class App extends React.Component {
       <>
         <div className="App">
           <Nab total={this.gettotalprice()} count={this.getNavcount()} />
+          <button  className="Button_Style" onClick={this.addproduct}>Add </button>
           <Cart
             products={products}
             onincrese={this.handleincreseQuntity}

@@ -1,4 +1,10 @@
+.Button_Style
+{
+  height: 20px;
+  width: 80px;
+  /* border-radius: 10%; */
 
+}
 
 .CartTotal
 {
