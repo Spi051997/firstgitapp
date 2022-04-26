@@ -43,12 +43,26 @@ class App extends React.Component {
     console.log("Hey need to increse the product", product);
     const { products } = this.state;
     const index = products.indexOf(product);
-    products[index].Qty += 1;
+    // products[index].Qty += 1;
 
-    this.setState({
-      products: products,
-      Loading:false
-    });
+    // this.setState({
+    //   products: products,
+    //   Loading:false
+    // });
+
+    const docref=firebase.firestore().collection('products').doc(products[index].id);
+    docref.update({
+      Qty:products[index].Qty+1
+    })
+    .then(()=>
+    {
+      console.log('Qty incresed')
+    })
+    .catch(()=>
+    {
+      console.error('Error while increseing the qty')
+    })
+    // console.log(docref);
   };
 
   handledecrementQuantity = (product) => {
