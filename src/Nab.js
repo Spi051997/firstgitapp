@@ -7,7 +7,7 @@ const Nab = (props) => {
         <span>
           <img
             className="Cartpic"
-            src=" https://cdn-icons.flaticon.com/png/512/649/premium/649931.png?token=exp=1650461147~hmac=07f16fb2f388a9165c580767c3f3cb25"
+            src=" https://cdn-icons-png.flaticon.com/512/2331/2331970.png"
           ></img>
         </span>
         <span>

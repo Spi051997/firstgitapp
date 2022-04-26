@@ -1,10 +1,10 @@
-import React from "react";
+  import React from "react";
 import "./App.css";
 import { Box, Flex, Heading, Text, Button, Link, Image, Card } from "rebass";
 
 const Cartitem = (props) => {
   console.log("this.props", props);
-  const { title, price, Qty } = props.product;
+  const { title, price, Qty,img } = props.product;
   const { product, onincrese, ondecerese, ondelete } =props;
 
   return (
@@ -14,7 +14,7 @@ const Cartitem = (props) => {
       <Flex className="Flexcart">
         <Card className="Cardcart">
           <Image
-            src="https://assets.myntassets.com/f_webp,dpr_1.8,q_60,w_210,c_limit,fl_progressive/assets/images/productimage/2021/2/17/c2ec7189-e1e6-447c-b167-1b7cf09c69f51613552879930-1.jpg"
+     crossorigin src="https://salebast.com/products/oppo-reno2-refurbished-good/?attribute_storage=8+GB%2F256+GB&attribute_color=Black&utm_source=Google%20Shopping&utm_campaign=Google%20Feed%20Exc&utm_medium=cpc&utm_term=8658"
             className="Imagecart"
           />
           <Flex className="MainFlexboxStyle">

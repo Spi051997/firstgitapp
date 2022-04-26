@@ -3,36 +3,40 @@ import "./App.css";
 import Cart from "./Cart";
 import Nab from "./Nab";
 import React from "react";
-// import { Box, Flex, Heading, Text, Button, Link, Image, Card } from "rebass";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/firestore';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products: [
-        {
-          title: "T-shirt",
-          price: 999,
-          Qty: 1,
-          img: "",
-          id: 1,
-        },
-        {
-          title: "Phone",
-          price: 99,
-          Qty: 10,
-          img: "",
-          id: 2,
-        },
-        {
-          title: "Ball",
-          price: 9,
-          Qty: 1,
-          img: "",
-          id: 3,
-        },
+      products: [ 
       ],
+      Loading:true
     };
+  }
+  componentDidMount()
+  {
+    firebase.firestore().collection('products').get().then((snapshot)=>
+    {
+      console.log(snapshot)
+      snapshot.docs.map((doc)=>
+      {
+        console.log(doc.data());
+      });
+
+      const products=snapshot.docs.map((doc)=>
+      {
+        const data=doc.data();
+        data['id']=doc.id;
+        return data
+      })
+
+      this.setState({
+        products
+      })
+    })
+   
   }
 
   handleincreseQuntity = (product) => {
@@ -43,11 +47,12 @@ class App extends React.Component {
 
     this.setState({
       products: products,
+      Loading:false
     });
   };
 
   handledecrementQuantity = (product) => {
-    console.log("Hello Decrement Product", product);
+    // console.log("Hello Decrement Product", product);
     const { products } = this.state;
     const index = products.indexOf(product);
 
@@ -62,7 +67,7 @@ class App extends React.Component {
   };
 
   handelete = (id) => {
-    console.log("Delete the product");
+    // console.log("Delete the product");
     const { products } = this.state;
     const item = products.filter((item) => item.id !== id);
     this.setState({
@@ -71,7 +76,7 @@ class App extends React.Component {
   };
 
   getNavcount = () => {
-    console.log("hello couent");
+    // console.log("hello couent");
     const { products } = this.state;
     let count = 0;
 
@@ -98,7 +103,7 @@ class App extends React.Component {
   }
 
   render() {
-    const { products } = this.state;
+    const { products,Loading } = this.state;
     return (
       <>
         <div className="App">
@@ -108,7 +113,12 @@ class App extends React.Component {
             onincrese={this.handleincreseQuntity}
             ondecerese={this.handledecrementQuantity}
             ondelete={this.handelete}
+          
           />
+          {
+            Loading && <h1>List Loading.......</h1>
+            
+          }
         </div>
       </>
     );
