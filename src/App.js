@@ -104,11 +104,22 @@ class App extends React.Component {
 
   handelete = (id) => {
     // console.log("Delete the product");
+
     const { products } = this.state;
-    const item = products.filter((item) => item.id !== id);
-    this.setState({
-      products: item,
+    const docref=firebase.firestore().collection('products').doc(id);
+    docref.delete()
+    .then(()=>
+    {
+      console.log("Product deleted")
+    })
+    .catch(()=>
+    {
+      console.log("Error while deleting the product")
     });
+    // const item = products.filter((item) => item.id !== id);
+    // this.setState({
+    //   products: item,
+    // });
   };
 
   getNavcount = () => {
