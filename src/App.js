@@ -70,14 +70,36 @@ class App extends React.Component {
     const { products } = this.state;
     const index = products.indexOf(product);
 
-    if (products[index].Qty === 0) {
-      return;
-    }
-    products[index].Qty -= 1;
+    const docref=firebase.firestore().collection('products').doc(products[index].id);
+  
 
-    this.setState({
-      products: products,
-    });
+      //  if(products[index].id===0)
+      //  {
+      //    return ;
+      //  }
+
+    docref.update({
+      
+        
+      Qty:products[index].Qty-1
+    })
+    .then(()=>
+    {
+      console.log("Prodduct decrement")
+    })
+    .catch(()=>
+    {
+      console.error("Error while decrese the Qty")
+    })
+
+    // if (products[index].Qty === 0) {
+    //   return;
+    // }
+    // products[index].Qty -= 1;
+
+    // this.setState({
+    //   products: products,
+    // });
   };
 
   handelete = (id) => {
