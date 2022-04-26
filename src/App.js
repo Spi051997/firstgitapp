@@ -1,10 +1,9 @@
-import "./App.css";
-
 import Cart from "./Cart";
 import Nab from "./Nab";
 import React from "react";
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
+import "./App.css";
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +16,10 @@ class App extends React.Component {
   }
   componentDidMount()
   {
-    firebase.firestore().collection('products').onSnapshot((snapshot)=>
+    firebase.firestore().collection('products')
+    .where('price','>=',999)
+    .orderBy('price','desc')
+    .onSnapshot((snapshot)=>
     {
       console.log(snapshot)
       snapshot.docs.map((doc)=>
